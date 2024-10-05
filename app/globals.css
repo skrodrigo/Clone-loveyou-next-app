@@ -2,26 +2,37 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(to bottom right, #fef2f2, #dc2626);
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@keyframes float-heart {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+    opacity: 0.5;
+  }
+  25% {
+    transform: translate(100px, -50px) rotate(45deg) scale(1.1);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate(200px, 0) rotate(-45deg) scale(0.9);
+    opacity: 1;
+  }
+  75% {
+    transform: translate(100px, 50px) rotate(45deg) scale(1.1);
+    opacity: 0.7;
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+    opacity: 0.5;
   }
 }
+
+.animate-float-heart {
+  animation-name: float-heart;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+

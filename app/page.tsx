@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import Particles from "./components/particles";
 
 const images = ["/foto1.jpg", "/foto2.jpg", "/foto3.jpg", "/foto4.jpg"];
 
@@ -43,28 +44,22 @@ export default function Home() {
 	}, []);
 
 	return (
-		<motion.div
-			initial={{ opacity: 0 }}
-			animate={{ opacity: 1 }}
-			transition={{ duration: 1 }}
-			className="min-h-screen bg-rose-700/85 text-white flex flex-col items-center justify-center p-4 overflow-hidden"
-		>
+		<div>
 			<motion.div
-				initial={{ y: 50, opacity: 0 }}
-				animate={{ y: 0, opacity: 1 }}
-				transition={{ duration: 0.8, delay: 0.2 }}
-				className="w-full max-w-md rounded-lg p-6 space-y-6"
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				transition={{ duration: 1 }}
+				className="min-h-screen text-black flex flex-col items-center justify-center p-4 selection:bg-rose-900 selection:text-white"
 			>
-				<div className="relative w-full aspect-video top-0 h-[500px] bg-no-repeat bg-center">
-					<AnimatePresence mode="wait">
-						<motion.div
-							key={currentImage}
-							initial={{ opacity: 0 }}
-							animate={{ opacity: 1 }}
-							exit={{ opacity: 0 }}
-							transition={{ duration: 0.5 }}
-							className="absolute inset-0"
-						>
+				<Particles />
+				<motion.div
+					initial={{ y: 50, opacity: 0 }}
+					animate={{ y: 0, opacity: 1 }}
+					transition={{ duration: 0.8, delay: 0.2 }}
+					className="w-full max-w-md rounded-lg p-6 space-y-6"
+				>
+					<div className="relative w-full aspect-video top-0 h-[500px] bg-no-repeat bg-center">
+						<AnimatePresence mode="wait">
 							<Image
 								src={images[currentImage]}
 								alt="Nós juntos"
@@ -72,47 +67,46 @@ export default function Home() {
 								objectFit="cover"
 								className="rounded-lg bg-no-repeat bg-top"
 							/>
-						</motion.div>
-					</AnimatePresence>
-				</div>
-				<motion.h2
-					initial={{ y: 20, opacity: 0 }}
-					animate={{ y: 0, opacity: 1 }}
-					transition={{ duration: 0.5, delay: 0.4 }}
-					className="text-2xl sm:text-3xl font-semibold text-center"
-				>
-					Rodrigo e Lívia
-				</motion.h2>
-				<motion.div
-					initial={{ y: 20, opacity: 0 }}
-					animate={{ y: 0, opacity: 1 }}
-					transition={{ duration: 0.5, delay: 0.6 }}
-					className="p-4 rounded-lg"
-				>
-					<div className="text-lg sm:text-xl space-y-2 font-medium text-center whitespace-pre-line">
-						<span>Juntos há:</span>
-						<div>{timeTogether}</div>
+						</AnimatePresence>
 					</div>
+					<motion.h2
+						initial={{ y: 20, opacity: 0 }}
+						animate={{ y: 0, opacity: 1 }}
+						transition={{ duration: 0.5, delay: 0.4 }}
+						className="text-2xl sm:text-3xl font-semibold text-center"
+					>
+						Rodrigo e Lívia
+					</motion.h2>
+					<motion.div
+						initial={{ y: 20, opacity: 0 }}
+						animate={{ y: 0, opacity: 1 }}
+						transition={{ duration: 0.5, delay: 0.6 }}
+						className="p-4 rounded-lg"
+					>
+						<div className="text-lg sm:text-xl space-y-2 font-semibold text-center whitespace-pre-line">
+							<span>Juntos há:</span>
+							<div>{timeTogether}</div>
+						</div>
+					</motion.div>
+					<motion.div
+						initial={{ y: 20, opacity: 0 }}
+						animate={{ y: 0, opacity: 1 }}
+						transition={{ duration: 0.5, delay: 0.8 }}
+						className="p-4 rounded-lg"
+					>
+						<p className="text-base font-semibold text-justify">
+							Cada momento com você é um pedaço de céu na Terra. Desde o início,
+							você se tornou minha melhor amiga, parceira e razão de tantos
+							sorrisos. Admiro como seu sorriso ilumina tudo e como seu olhar me
+							traz paz. Com você, sinto que posso enfrentar qualquer desafio,
+							porque tenho o apoio da pessoa mais incrível do mundo. Obrigado
+							por ser quem é, por trazer alegria e amor à minha vida. Que
+							possamos continuar construindo sonhos e memórias juntos. Você é o
+							melhor presente que a vida me deu. Te amo muito!
+						</p>
+					</motion.div>
 				</motion.div>
-				<motion.div
-					initial={{ y: 20, opacity: 0 }}
-					animate={{ y: 0, opacity: 1 }}
-					transition={{ duration: 0.5, delay: 0.8 }}
-					className="p-4 rounded-lg"
-				>
-					<p className="text-sm sm:text-base text-justify">
-						Cada momento com você é um pedaço de céu na Terra. Desde o início,
-						você se tornou minha melhor amiga, parceira e razão de tantos
-						sorrisos. Admiro como seu sorriso ilumina tudo e como seu olhar me
-						traz paz. Com você, sinto que posso enfrentar qualquer desafio,
-						porque tenho o apoio da pessoa mais incrível do mundo. Obrigado por
-						ser quem é, por trazer alegria e amor à minha vida. Que possamos
-						continuar construindo sonhos e memórias juntos. Você é o melhor
-						presente que a vida me deu. Te amo muito!
-					</p>
-				</motion.div>
-			</motion.div>
-			<style jsx global>{`
+				<style jsx global>{`
         @keyframes fallHeart {
           0% {
             transform: translateY(-100vh) rotate(0deg);
@@ -129,6 +123,7 @@ export default function Home() {
           animation: fallHeart 5s linear infinite;
         }
       `}</style>
-		</motion.div>
+			</motion.div>
+		</div>
 	);
 }

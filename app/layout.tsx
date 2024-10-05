@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Inter } from "next/font/google";
+import { Anek_Bangla } from "next/font/google";
 
-const inter = Inter({ subsets: ["latin"] });
+const AnekBangla = Anek_Bangla({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
 	title: "Rodrigo e Lívia",
@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${inter.className} antialiased`}>{children}</body>
+			<body className={`${AnekBangla.className} antialiased`}>{children}</body>
 		</html>
 	);
 }
