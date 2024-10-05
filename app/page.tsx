@@ -73,7 +73,7 @@ export default function Home() {
 						initial={{ y: 20, opacity: 0 }}
 						animate={{ y: 0, opacity: 1 }}
 						transition={{ duration: 0.5, delay: 0.4 }}
-						className="text-2xl sm:text-3xl font-semibold text-center"
+						className="text-2xl sm:text-3xl font-semibold text-center text-white bg-rose-900"
 					>
 						Rodrigo e Lívia
 					</motion.h2>
