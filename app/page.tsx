@@ -3,7 +3,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import Particles from "./components/particles";
 
 const images = ["/foto1.jpg", "/foto2.jpg", "/foto3.jpg", "/foto4.jpg"];
 
@@ -45,7 +44,6 @@ export default function Home() {
 
 	return (
 		<div>
-			<Particles />
 			<motion.div
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1 }}

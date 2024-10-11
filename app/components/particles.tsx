@@ -59,7 +59,7 @@ export default function Particles() {
 	}, []);
 
 	return (
-		<div className="fixed inset-0 overflow-hidden bg-[#030D21]">
+		<div className="flex justify-center items-center w-full h-screen inset-0 overflow-hidden bg-[#030D21]">
 			{hearts.map((heart) => (
 				<AnimatedHeart key={heart.size} style={heart.style} size={heart.size} />
 			))}
