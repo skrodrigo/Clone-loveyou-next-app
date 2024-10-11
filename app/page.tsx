@@ -17,7 +17,7 @@ export default function Home() {
 		}, 5000);
 
 		const timeInterval = setInterval(() => {
-			const start = new Date("2023-10-20");
+			const start = new Date("2023-10-20T00:00:00"); // Ensure the start time is set to midnight
 			const now = new Date();
 			const diff = now.getTime() - start.getTime();
 			const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
@@ -45,13 +45,13 @@ export default function Home() {
 
 	return (
 		<div>
+			<Particles />
 			<motion.div
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1 }}
 				transition={{ duration: 1 }}
-				className="min-h-screen text-black flex flex-col items-center justify-center p-4 selection:bg-rose-900 selection:text-white"
+				className="min-h-screen text-white flex flex-col items-center justify-center p-4 selection:bg-blue-900 selection:text-white"
 			>
-				<Particles />
 				<motion.div
 					initial={{ y: 50, opacity: 0 }}
 					animate={{ y: 0, opacity: 1 }}
@@ -73,7 +73,7 @@ export default function Home() {
 						initial={{ y: 20, opacity: 0 }}
 						animate={{ y: 0, opacity: 1 }}
 						transition={{ duration: 0.5, delay: 0.4 }}
-						className="text-2xl sm:text-3xl font-semibold text-center text-white bg-rose-900"
+						className="text-2xl sm:text-3xl text-center "
 					>
 						Rodrigo e Lívia
 					</motion.h2>
@@ -83,8 +83,8 @@ export default function Home() {
 						transition={{ duration: 0.5, delay: 0.6 }}
 						className="p-4 rounded-lg"
 					>
-						<div className="text-lg sm:text-xl space-y-2 font-semibold text-center whitespace-pre-line">
-							<span>Juntos há:</span>
+						<div className="text-lg sm:text-xl space-y-2 text-center whitespace-pre-line font-light">
+							<span>❤️ Juntos há:</span>
 							<div>{timeTogether}</div>
 						</div>
 					</motion.div>
@@ -94,7 +94,7 @@ export default function Home() {
 						transition={{ duration: 0.5, delay: 0.8 }}
 						className="p-4 rounded-lg"
 					>
-						<p className="text-base font-semibold text-justify">
+						<p className="text-justify text-base font-light">
 							Cada momento com você é um pedaço de céu na Terra. Desde o início,
 							você se tornou minha melhor amiga, parceira e razão de tantos
 							sorrisos. Admiro como seu sorriso ilumina tudo e como seu olhar me
@@ -102,7 +102,7 @@ export default function Home() {
 							porque tenho o apoio da pessoa mais incrível do mundo. Obrigado
 							por ser quem é, por trazer alegria e amor à minha vida. Que
 							possamos continuar construindo sonhos e memórias juntos. Você é o
-							melhor presente que a vida me deu. Te amo muito!
+							melhor presente que a vida me deu. Te amo muito! ❤️
 						</p>
 					</motion.div>
 				</motion.div>

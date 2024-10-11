@@ -10,7 +10,7 @@ interface HeartProps {
 
 const AnimatedHeart: React.FC<HeartProps> = ({ style, size }) => (
 	<Heart
-		className="absolute text-red-300 animate-float-heart"
+		className="absolute text-white/20 animate-float-heart"
 		style={style}
 		size={size}
 		fill="currentColor"
@@ -22,7 +22,7 @@ export default function Particles() {
 
 	useEffect(() => {
 		const generateHearts = () => {
-			const numberOfHearts = Math.floor(Math.random() * 15);
+			const numberOfHearts = 10;
 			const screenWidth = window.innerWidth;
 			const screenHeight = window.innerHeight;
 			const gridSize = Math.sqrt(numberOfHearts);
@@ -59,7 +59,7 @@ export default function Particles() {
 	}, []);
 
 	return (
-		<div className="fixed inset-0 overflow-hidden bg-gradient-to-br from-red-50 to-red-600">
+		<div className="fixed inset-0 overflow-hidden bg-[#030D21]">
 			{hearts.map((heart) => (
 				<AnimatedHeart key={heart.size} style={heart.style} size={heart.size} />
 			))}

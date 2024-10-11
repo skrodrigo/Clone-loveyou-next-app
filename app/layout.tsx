@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Anek_Bangla } from "next/font/google";
+import { Outfit } from "next/font/google";
 
-const AnekBangla = Anek_Bangla({ subsets: ["latin"] });
+const outFit = Outfit({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
 	title: "Rodrigo e Lívia",
@@ -16,7 +16,9 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`${AnekBangla.className} antialiased`}>{children}</body>
+			<body className={`${outFit.className} antialiased bg-[#030D21]`}>
+				{children}
+			</body>
 		</html>
 	);
 }

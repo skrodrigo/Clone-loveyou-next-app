@@ -2,9 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  background: linear-gradient(to bottom right, #fef2f2, #dc2626);
-}
 
 @keyframes float-heart {
   0% {
