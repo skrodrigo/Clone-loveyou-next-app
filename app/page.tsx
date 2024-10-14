@@ -119,12 +119,8 @@ export default function Home() {
 								width: "100%",
 								playerVars: {
 									autoplay: 1,
-									mute: 0,
 									controls: 0,
 								},
-							}}
-							onReady={(event: { target: { playVideo: () => void } }) => {
-								event.target.playVideo();
 							}}
 						/>
 					</motion.div>
