@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import YouTube from "react-youtube";
 
 const images = ["/foto1.jpg", "/foto2.jpg", "/foto3.jpg", "/foto4.jpg"];
 
@@ -16,9 +17,10 @@ export default function Home() {
 		}, 5000);
 
 		const timeInterval = setInterval(() => {
-			const start = new Date("2023-10-20T00:00:00"); // Ensure the start time is set to midnight
+			const start = new Date("2023-10-23"); // Data inicial corrigida
 			const now = new Date();
 			const diff = now.getTime() - start.getTime();
+
 			const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
 			const months = Math.floor(
 				(diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30),
@@ -31,8 +33,9 @@ export default function Home() {
 			);
 			const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
 			const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
 			setTimeTogether(
-				`${years} anos, ${months} meses, ${days} dias\n${hours} horas, ${minutes} minutos e ${seconds} s`,
+				`${years} anos, ${months} meses, ${days} dias\n${hours} horas, ${minutes} minutos e ${seconds} segundos`,
 			);
 		}, 1000);
 
@@ -103,24 +106,26 @@ export default function Home() {
 							melhor presente que a vida me deu. Te amo muito! ❤️
 						</p>
 					</motion.div>
+					<motion.div
+						initial={{ y: 20, opacity: 0 }}
+						animate={{ y: 0, opacity: 1 }}
+						transition={{ duration: 0.5, delay: 1 }}
+						className="w-full  rounded-lg "
+					>
+						<YouTube
+							videoId="jU687UalkTg"
+							opts={{
+								height: "100%",
+								width: "100%",
+								playerVars: {
+									autoplay: 1,
+									mute: 0,
+									controls: 0,
+								},
+							}}
+						/>
+					</motion.div>
 				</motion.div>
-				<style jsx global>{`
-        @keyframes fallHeart {
-          0% {
-            transform: translateY(-100vh) rotate(0deg);
-            opacity: 1;
-          }
-          100% {
-            transform: translateY(100vh) rotate(360deg);
-            opacity: 0;
-          }
-        }
-        .heart {
-          position: fixed;
-          top: -5vh;
-          animation: fallHeart 5s linear infinite;
-        }
-      `}</style>
 			</motion.div>
 		</div>
 	);
