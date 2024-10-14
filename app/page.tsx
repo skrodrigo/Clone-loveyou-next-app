@@ -17,7 +17,7 @@ export default function Home() {
 		}, 5000);
 
 		const timeInterval = setInterval(() => {
-			const start = new Date("2023-10-23"); // Data inicial corrigida
+			const start = new Date("2023-10-23");
 			const now = new Date();
 			const diff = now.getTime() - start.getTime();
 
@@ -110,7 +110,7 @@ export default function Home() {
 						initial={{ y: 20, opacity: 0 }}
 						animate={{ y: 0, opacity: 1 }}
 						transition={{ duration: 0.5, delay: 1 }}
-						className="w-full  rounded-lg "
+						className="w-full rounded-lg"
 					>
 						<YouTube
 							videoId="jU687UalkTg"
@@ -122,6 +122,9 @@ export default function Home() {
 									mute: 0,
 									controls: 0,
 								},
+							}}
+							onReady={(event: { target: { playVideo: () => void } }) => {
+								event.target.playVideo();
 							}}
 						/>
 					</motion.div>
