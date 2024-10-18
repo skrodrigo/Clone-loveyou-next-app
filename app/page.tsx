@@ -1,9 +1,13 @@
 "use client";
 
+import dayjs from "dayjs";
+import duration from "dayjs/plugin/duration";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import YouTube from "react-youtube";
+
+dayjs.extend(duration);
 
 const images = ["/foto1.jpg", "/foto2.jpg", "/foto3.jpg", "/foto4.jpg"];
 
@@ -17,22 +21,16 @@ export default function Home() {
 		}, 5000);
 
 		const timeInterval = setInterval(() => {
-			const start = new Date("2023-10-23");
-			const now = new Date();
-			const diff = now.getTime() - start.getTime();
+			const start = dayjs("2023-10-20");
+			const now = dayjs();
+			const diff = dayjs.duration(now.diff(start));
 
-			const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
-			const months = Math.floor(
-				(diff % (1000 * 60 * 60 * 24 * 365)) / (1000 * 60 * 60 * 24 * 30),
-			);
-			const days = Math.floor(
-				(diff % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24),
-			);
-			const hours = Math.floor(
-				(diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
-			);
-			const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-			const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+			const years = diff.years();
+			const months = diff.months();
+			const days = diff.days();
+			const hours = diff.hours();
+			const minutes = diff.minutes();
+			const seconds = diff.seconds();
 
 			setTimeTogether(
 				`${years} anos, ${months} meses, ${days} dias\n${hours} horas, ${minutes} minutos e ${seconds} segundos`,
