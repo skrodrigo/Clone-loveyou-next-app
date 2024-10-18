@@ -1,42 +1,88 @@
 "use client";
 
 import dayjs from "dayjs";
-import duration from "dayjs/plugin/duration";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import YouTube from "react-youtube";
 
-dayjs.extend(duration);
-
-const images = ["/foto1.jpg", "/foto2.jpg", "/foto3.jpg", "/foto4.jpg"];
+const images = [
+	"/foto1.jpg",
+	"/foto2.jpg",
+	"/foto3.jpg",
+	"/foto4.jpg",
+	"/foto5.jpg",
+];
 
 export default function Home() {
 	const [currentImage, setCurrentImage] = useState(0);
 	const [timeTogether, setTimeTogether] = useState("");
 
+	// Preload images
 	useEffect(() => {
+		const preloadImages = async () => {
+			await Promise.all(
+				images.map((src) => {
+					return new Promise((resolve, reject) => {
+						const img = new window.Image();
+						img.src = src;
+						img.onload = resolve;
+						img.onerror = reject;
+					});
+				}),
+			);
+		};
+
+		preloadImages();
+	}, []);
+
+	useEffect(() => {
+		// Intervalo para troca de imagem
 		const imageInterval = setInterval(() => {
 			setCurrentImage((prev) => (prev + 1) % images.length);
 		}, 5000);
 
+		// Intervalo para calcular o tempo juntos
 		const timeInterval = setInterval(() => {
 			const start = dayjs("2023-10-20");
 			const now = dayjs();
-			const diff = dayjs.duration(now.diff(start));
 
-			const years = diff.years();
-			const months = diff.months();
-			const days = diff.days();
-			const hours = diff.hours();
-			const minutes = diff.minutes();
-			const seconds = diff.seconds();
+			// Diferença exata para cada unidade de tempo
+			const years = now.diff(start, "year");
+			const months = now.diff(start.add(years, "year"), "month");
+			const days = now.diff(
+				start.add(years, "year").add(months, "month"),
+				"day",
+			);
+			const hours = now.diff(
+				start.add(years, "year").add(months, "month").add(days, "day"),
+				"hour",
+			);
+			const minutes = now.diff(
+				start
+					.add(years, "year")
+					.add(months, "month")
+					.add(days, "day")
+					.add(hours, "hour"),
+				"minute",
+			);
+			const seconds = now.diff(
+				start
+					.add(years, "year")
+					.add(months, "month")
+					.add(days, "day")
+					.add(hours, "hour")
+					.add(minutes, "minute"),
+				"second",
+			);
 
+			// Monta a string do tempo juntos, omitindo unidades com valor 0
 			setTimeTogether(
-				`${years} anos, ${months} meses, ${days} dias\n${hours} horas, ${minutes} minutos e ${seconds} segundos`,
+				`${years ? `${years} anos, ` : ""}${months ? `${months} meses, ` : ""}${days} dias\n${hours} horas, ${minutes} minutos e ${seconds} segundos`,
 			);
 		}, 1000);
 
+		// Limpa os intervalos ao desmontar o componente
 		return () => {
 			clearInterval(imageInterval);
 			clearInterval(timeInterval);
@@ -59,13 +105,22 @@ export default function Home() {
 				>
 					<div className="relative w-full aspect-video top-0 h-[500px] bg-no-repeat bg-center">
 						<AnimatePresence mode="wait">
-							<Image
-								src={images[currentImage]}
-								alt="Nós juntos"
-								layout="fill"
-								objectFit="cover"
-								className="rounded-lg bg-no-repeat bg-top"
-							/>
+							<motion.div
+								key={currentImage}
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								exit={{ opacity: 0 }}
+								transition={{ duration: 0.8 }}
+								className="absolute inset-0"
+							>
+								<Image
+									src={images[currentImage]}
+									alt="Nós juntos"
+									layout="fill"
+									objectFit="cover"
+									className="rounded-lg bg-no-repeat bg-top"
+								/>
+							</motion.div>
 						</AnimatePresence>
 					</div>
 					<motion.h2
