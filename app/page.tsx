@@ -93,16 +93,32 @@ export default function Home() {
 						transition={{ duration: 0.5, delay: 0.8 }}
 						className="p-4 rounded-lg"
 					>
-						<p className="text-justify text-base font-light">
-							Cada momento com você é um pedaço de céu na Terra. Desde o início,
-							você se tornou minha melhor amiga, parceira e razão de tantos
-							sorrisos. Admiro como seu sorriso ilumina tudo e como seu olhar me
-							traz paz. Com você, sinto que posso enfrentar qualquer desafio,
-							porque tenho o apoio da pessoa mais incrível do mundo. Obrigado
-							por ser quem é, por trazer alegria e amor à minha vida. Que
-							possamos continuar construindo sonhos e memórias juntos. Você é o
-							melhor presente que a vida me deu. Te amo muito! ❤️
-						</p>
+						<div className="space-y-2">
+							<p className="text-justify text-base font-light">
+								Cada momento ao seu lado é um verdadeiro pedaço de céu na Terra.
+								Desde o primeiro instante, você se tornou minha melhor amiga,
+								minha parceira e a razão de tantos sorrisos. Eu me perco no
+								brilho do seu sorriso, que ilumina tudo ao redor, e no seu
+								olhar, que me traz uma paz indescritível.
+							</p>
+							<p className="text-justify text-base font-light">
+								Com você, sinto que posso enfrentar qualquer desafio, porque
+								tenho ao meu lado a pessoa mais incrível do mundo. A única
+								dúvida entre nós é que filme assistir, o que pedir para o
+								jantar, qual a roupa perfeita pra sair, quem vai dirigir e quem
+								vai brindar a vida. Qual igreja vamos casar, se compramos uma
+								casa ou um apê, se fazemos festa ou se fugimos para viajar, e
+								qual o nome do nosso bebê... Todas essas dúvidas a gente tira de
+								letra, porque o resto, meu amor, é pura certeza.
+							</p>
+							<p className="text-justify text-base font-light">
+								Obrigado por ser quem você é. Por trazer tanta alegria e tanto
+								amor para a minha vida. Que possamos continuar sonhando, criando
+								memórias e construindo uma vida juntos, dia após dia. Você é o
+								melhor presente que a vida e Deus me deu, e eu te amo mais do
+								que qualquer palavra pode dizer! ❤️
+							</p>
+						</div>
 					</motion.div>
 					<motion.div
 						initial={{ y: 20, opacity: 0 }}
